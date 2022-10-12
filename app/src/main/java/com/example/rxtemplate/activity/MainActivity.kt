@@ -1,7 +1,8 @@
-package com.example.rxtemplate
+package com.example.rxtemplate.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.rxtemplate.R
 import com.example.rxtemplate.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {

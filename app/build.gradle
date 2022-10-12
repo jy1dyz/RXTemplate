@@ -5,6 +5,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
 }
+apply plugin: 'kotlin-android'
 
 android {
     compileSdk 32
@@ -19,8 +20,17 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
+        debug {
+            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
+        }
         release {
+            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -51,6 +61,12 @@ dependencies {
     implementation libs.interceptor
     implementation libs.scalar_converter
 
+    //rx
+    implementation libs.rx_java2
+    implementation libs.rx_android
+    implementation libs.rx_adapter
+
+
     //Navigation
     implementation libs.navigation_fragment
     implementation libs.navigation_ui
@@ -58,34 +74,6 @@ dependencies {
     //Hilt
     implementation libs.hilt
     kapt libs.hilt_compiler
-
-    //Splash screen
-    implementation libs.splashscreen
-
-    //Chili design
-    api libs.design_chili
-
-    //Room
-    implementation libs.room_runtime
-    kapt libs.room_compiler
-    implementation libs.room_ktx
-
-    // service
-    implementation libs.lifecycle_service
-    implementation libs.lifecycle_runtime
-
-
-    // core
-    implementation libs.play_core
-
-    // camera
-    implementation libs.cameraX
-    implementation libs.camera_lifecycle
-    implementation libs.camera_view
-    implementation libs.camera_core
-
-    // biometric
-    implementation libs.biometric
 
     //glide
     implementation libs.glide
