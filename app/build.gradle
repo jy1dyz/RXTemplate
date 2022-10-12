@@ -19,8 +19,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
+        debug {
+
+            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
+        }
+
         release {
+            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -62,9 +73,6 @@ dependencies {
     //Splash screen
     implementation libs.splashscreen
 
-    //Chili design
-    api libs.design_chili
-
     //Room
     implementation libs.room_runtime
     kapt libs.room_compiler
@@ -89,5 +97,10 @@ dependencies {
 
     //glide
     implementation libs.glide
+
+    //rx_java2
+    implementation libs.rx_java2
+    implementation libs.rx_android
+    implementation libs.rx_adapter
 
 }
