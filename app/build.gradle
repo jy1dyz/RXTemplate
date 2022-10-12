@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.example.rxtemplate"
+        minSdk 24
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    //Base android
+    implementation libs.core_ktx
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity_ktx
+    implementation libs.fragment_ktx
+    implementation libs.viewmodel
+    implementation libs.multidex
+
+    // retrofit
+    implementation libs.retrofit
+    implementation libs.gson_converter
+    implementation libs.interceptor
+    implementation libs.scalar_converter
+
+    //Navigation
+    implementation libs.navigation_fragment
+    implementation libs.navigation_ui
+
+    //Hilt
+    implementation libs.hilt
+    kapt libs.hilt_compiler
+
+    //Splash screen
+    implementation libs.splashscreen
+
+    //Chili design
+    api libs.design_chili
+
+    //Room
+    implementation libs.room_runtime
+    kapt libs.room_compiler
+    implementation libs.room_ktx
+
+    // service
+    implementation libs.lifecycle_service
+    implementation libs.lifecycle_runtime
+
+
+    // core
+    implementation libs.play_core
+
+    // camera
+    implementation libs.cameraX
+    implementation libs.camera_lifecycle
+    implementation libs.camera_view
+    implementation libs.camera_core
+
+    // biometric
+    implementation libs.biometric
+
+    //glide
+    implementation libs.glide
+
+}
